@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+  body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%;
+    position: relative;
+  }
+}
+
+.font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+@keyframes tilt {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
+}
+
+.animate-tilt {
+  animation: tilt 10s infinite linear;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600;
+}
+
+.typewriter {
+  border-right: 2px solid transparent;
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: rgb(59, 130, 246); }
+}
+
+@keyframes gradient-shift {
+  0% {
+    stop-color: #3B82F6;
+  }
+  33% {
+    stop-color: #8B5CF6;
+  }
+  66% {
+    stop-color: #6366F1;
+  }
+  100% {
+    stop-color: #3B82F6;
+  }
+}
+
+.animate-gradient-shift stop {
+  animation: gradient-shift 6s infinite;
+}
+
+.tech-grid {
+  @apply bg-grid-pattern;
+}
+
+.glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+@layer components {
+  .cyber-button {
+    @apply relative px-6 py-3 bg-blue-600 text-white font-mono rounded-md 
+           hover:bg-blue-700 transition-all duration-200 overflow-hidden
+           border border-blue-400 shadow-lg;
+  }
+
+  .cyber-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0
+           transition-opacity duration-200;
+  }
+
+  .cyber-button:hover::before {
+    @apply opacity-20;
+  }
+
+  .cyber-button::after {
+    content: '';
+    @apply absolute inset-0 bg-grid-pattern opacity-5;
+  }
+}
